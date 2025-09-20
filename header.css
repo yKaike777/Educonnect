@@ -11,6 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 header{
@@ -43,7 +44,7 @@ header{
 
 #cargo{
     font-size: 1rem;
-    margin-top: -10px;
+    margin-top: -8px;
     color: var(--secondary-color);
     align-self: end;
 }
