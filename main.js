@@ -2,10 +2,10 @@ document.getElementById("nome").innerText = sessionStorage.getItem("nome").toUpp
 
 let database = {
     "turmas" : [
-        {"turmaID": 1, "nome": "Turma A"},
-        {"turmaID": 2, "nome": "Turma B"},
-        {"turmaID": 3, "nome": "Turma C"},
-        {"turmaID": 4, "nome": "Turma D"}
+        {"turmaID": 1, "nome": "1A"},
+        {"turmaID": 2, "nome": "1B"},
+        {"turmaID": 3, "nome": "2C"},
+        {"turmaID": 4, "nome": "3D"}
     ],
     "alunos": [
         {"id": 1, "nome": "Ana", "notas": [], "turma": 1},

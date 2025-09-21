@@ -1,0 +1,66 @@
+:root{
+    --primary-color: #383F6B;
+    --secondary-color: #ff6600;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --border-radius: 5px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#grupo-botoes{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.botao-acao{
+    background-color: var(--secondary-color);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.botao-acao:hover{
+    background-color: #e65c00;
+    transform: translateY(-2px);
+}
+
+main{
+    padding: 20px;
+}
+
+#grupo-turmas{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.card{
+    background-color: var(--primary-color);
+    width: 400px;
+    height: 200px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.card:hover{
+    background-color: #2f355f;
+    transform: translateY(-5px);
+}
+
+.grupo-qntd-alunos{
+    display: flex;
+    justify-content: space-between;
+}
