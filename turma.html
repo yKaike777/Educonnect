@@ -81,6 +81,59 @@
             </table>
         </div>
     </main>
+
+    <div id="overlay">
+        <div id="edicao-notas-menu">
+            <h1>Notas</h1>
+            <h2>Aluno: <span id="nome-aluno">Nome do Aluno</span></h2>
+
+            <div id="grupo-notas">
+                <section>
+                    <span>Prova 1: </span> 
+                    <div>
+                        <input type="number" id="prova1" min="0" max="3" step="0.1">
+                        <span>/ 3,0</span>
+                    </div>
+                </section>
+
+                <section>
+                <span>Prova 2: </span> 
+                    <div>
+                        <input type="number" id="prova2" min="0" max="3" step="0.1">
+                        <span>/ 3,0</span>
+                    </div> 
+                </section>
+
+                <section>
+                    <span>Trabalho 1: </span> 
+                    <div>
+                        <input type="number" id="trabalho1" min="0" max="3" step="0.1">
+                        <span>/ 3,0</span>
+                    </div>
+                </section>
+
+                <section>
+                    <span>Recuperação: </span> 
+                    <div>
+                        <input type="number" id="recup" min="0" max="6" step="0.1">
+                        <span>/ 6,0</span>
+                    </div>
+                </section>
+
+                <section>
+                    <span>Qualitativa: </span> 
+                    <div>
+                        <input type="number" id="quali" min="0" max="1" step="0.1">
+                        <span>/ 1,0</span>
+                    </div>
+                </section>
+            </div>
+            
+            
+            <button id="salvar-notas" class="botao-acao">Salvar</button>
+            <div id="botao-fechar-menu">X</div>
+        </div>
+    </div>
     
 
 

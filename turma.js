@@ -63,3 +63,33 @@ presencaBotao.forEach(botao => {
         }
     });
 });
+
+// Adiciona funcionalidade de edição de notas
+const iconesEdicao = document.querySelectorAll('.fa-pen-to-square');
+
+iconesEdicao.forEach((icone) => {
+    icone.addEventListener('click', () => {
+        document.getElementById('overlay').style.display = 'block';
+    })
+})
+
+function atualizarNotas() {
+    const prova1 = parseFloat(document.getElementById('prova1').value) || 0;
+    const prova2 = parseFloat(document.getElementById('prova2').value) || 0;
+    const trabalho1 = parseFloat(document.getElementById('trabalho1').value) || 0;
+    const recup = parseFloat(document.getElementById('recup').value) || 0;
+    const quali = parseFloat(document.getElementById('quali').value) || 0;
+}
+
+const botaoFechar = document.getElementById('botao-fechar-menu');
+
+botaoFechar.addEventListener('click', () => {
+    document.getElementById('overlay').style.display = 'none';
+})
+
+const botaoSalvar = document.getElementById('salvar-notas');
+
+botaoSalvar.addEventListener('click', () => {
+    document.getElementById('overlay').style.display = 'none';
+    atualizarNotas();
+})
