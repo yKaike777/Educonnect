@@ -1,0 +1,34 @@
+#grupo-alunos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table{
+    width: 100%;
+}
+
+table th{
+    padding: 5px 15px;
+}
+
+.aluno{
+    text-align: center;
+    height: 50px;
+}
+
+td{
+    position: relative;
+}
+
+.fa-pen-to-square{
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.presenca{
+    cursor: pointer;
+}

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="turma.css">
     <link rel="stylesheet" href="professor.css">
     <link rel="stylesheet" href="header.css">
     <title>Início - Educonnect</title>
@@ -33,7 +34,54 @@
         <button class="botao-acao" id="botao-avisos"><i class="fa-solid fa-gears"></i> Avisos</button>
     </div>
 
-    <h1 id="turma">Turma 0</h1>
+    <main>
+        <h1 id="turma">Turma 0</h1>
+
+        <div id="container-turma">
+            <div id="grupo-info">
+                <div class="info">
+                    <span class="titulo-info">Matéria:</span>
+                    <span class="dado-info" id="materia">Matemática</span>
+                </div>
+
+                <div class="info">
+                    <span class="titulo-info">Professor:</span>
+                    <span class="dado-info" id="professor">Nome do Professor</span>
+                </div>
+
+                <div class="info">
+                    <span class="titulo-info">Quantidade de Alunos:</span>
+                    <span class="dado-info" id="qntd-alunos">99</span>
+                </div>
+            </div>
+
+            <div id="grupo-botoes-turma">
+                <button class="botao-acao" id="botao-adicionar-aluno"><i class="fa-solid fa-user-plus"></i> Adicionar Aluno</button>
+                <button class="botao-acao" id="botao-remover-aluno"><i class="fa-solid fa-user-minus"></i> Remover Aluno</button>
+            </div>
+        </div>
+
+        
+        <div id="grupo-alunos">
+            <h2>Alunos</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th style="padding: 5px 0px;">Nº Chamada</th>
+                        <th>Nome do Aluno</th>
+                        <th style="padding: 5px 0px;">Nota 1º Trimestre</th>
+                        <th style="padding: 5px 0px;">Nota 2º Trimestre</th>
+                        <th style="padding: 5px 0px;">Nota 3º Trimestre</th>
+                        <th>Presença</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Os alunos serão inseridos aqui via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
 
 
     <script src="main.js"></script>
