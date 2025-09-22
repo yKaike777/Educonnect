@@ -29,12 +29,13 @@ alunos.forEach((aluno) => {
                         <td class="nota-primeiro-tri">6,0 <i class="fa-solid fa-pen-to-square"></i></td>
                         <td class="nota-segundo-tri">6,0 <i class="fa-solid fa-pen-to-square"></i></td>
                         <td class="nota-terceiro-tri">6,0 <i class="fa-solid fa-pen-to-square"></i></td>
-                        <td class="presenca">Sim</td>                      
+                        <td class="presenca"><button class="botao-presenca">Sim</button></td>                      
                    </tr>
                     `;
 
     tabela.appendChild(linha);
 });
+
 
 // Preenche os nomes dos alunos e números de chamada
 const nomeTabela = document.querySelectorAll('.nome-aluno');
@@ -48,3 +49,17 @@ nomeTabela.forEach((aluno, index) => {
 
 const nomeProfessor = document.getElementById('professor');
 nomeProfessor.textContent = sessionStorage.getItem('nome');
+
+
+const presencaBotao = document.querySelectorAll('.botao-presenca');
+presencaBotao.forEach(botao => {
+    botao.addEventListener('click', () => {
+        botao.classList.toggle('ausente');
+
+        if (botao.classList.contains('ausente')) {
+            botao.textContent = 'Não';
+        } else {
+            botao.textContent = 'Sim';
+        }
+    });
+});

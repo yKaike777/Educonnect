@@ -32,3 +32,17 @@ td{
 .presenca{
     cursor: pointer;
 }
+
+.botao-presenca{
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+}
+
+.ausente{
+    background-color: #ff4d4d;
+}
