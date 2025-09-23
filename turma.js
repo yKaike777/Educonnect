@@ -12,7 +12,7 @@ const alunosNome = alunos.map(aluno => aluno.nome);
 
 // Atualiza a quantidade de alunos
 const qntdAlunos = document.getElementById('qntd-alunos');
-qntdAlunos.textContent = `Quantidade de Alunos: ${alunos.length}`;
+qntdAlunos.textContent = `${alunos.length}`;
 
 alunos.forEach((aluno) => {
     // Adiciona uma nova linha para cada aluno
@@ -26,9 +26,9 @@ alunos.forEach((aluno) => {
                     <tr class="aluno" id="1">
                         <td class="num-chamada">10</td>
                         <td class="nome-aluno">nome do aluno</td>
-                        <td class="nota-primeiro-tri">6,0 <i class="fa-solid fa-pen-to-square"></i></td>
-                        <td class="nota-segundo-tri">6,0 <i class="fa-solid fa-pen-to-square"></i></td>
-                        <td class="nota-terceiro-tri">6,0 <i class="fa-solid fa-pen-to-square"></i></td>
+                        <td class="nota-primeiro-tri"><span class="nota-text">0,0</span> <i class="fa-solid fa-pen-to-square"></i></td>
+                        <td class="nota-segundo-tri"><span class="nota-text">0,0</span> <i class="fa-solid fa-pen-to-square"></i></td>
+                        <td class="nota-terceiro-tri"><span class="nota-text">0,0</span> <i class="fa-solid fa-pen-to-square"></i></td>
                         <td class="presenca"><button class="botao-presenca">Sim</button></td>                      
                    </tr>
                     `;
@@ -65,11 +65,16 @@ presencaBotao.forEach(botao => {
 });
 
 // Adiciona funcionalidade de edição de notas
+let celulaEditando = null;
 const iconesEdicao = document.querySelectorAll('.fa-pen-to-square');
 
 iconesEdicao.forEach((icone) => {
-    icone.addEventListener('click', () => {
+    icone.addEventListener('click', (e) => {
         document.getElementById('overlay').style.display = 'block';
+
+        let iconeClicado = e.currentTarget
+        celulaEditando = iconeClicado.parentElement;
+        
     })
 })
 
@@ -79,6 +84,17 @@ function atualizarNotas() {
     const trabalho1 = parseFloat(document.getElementById('trabalho1').value) || 0;
     const recup = parseFloat(document.getElementById('recup').value) || 0;
     const quali = parseFloat(document.getElementById('quali').value) || 0;
+
+    let notaFinal = prova1 + prova2 + trabalho1 + quali;
+
+    if (recup > prova1 + prova2) {
+        notaFinal = recup + trabalho1 + quali;
+    }
+
+    if (celulaEditando) {
+        let spanNota = celulaEditando.querySelector('.nota-text');
+        spanNota.textContent = notaFinal.toFixed(1).replace('.', ',');
+    }
 }
 
 const botaoFechar = document.getElementById('botao-fechar-menu');
