@@ -11,7 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
 header{
@@ -61,3 +61,4 @@ header{
 i{
     cursor: pointer;
 }
+
