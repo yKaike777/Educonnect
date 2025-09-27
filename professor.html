@@ -5,41 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="professor.css">
-    <link rel="stylesheet" href="header.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <title>Início - Educonnect</title>
 </head>
 <body>
-    <header>
-        <div id="grupo-logo">
-            <img src="" alt="">
-            <div id="inicio"><i class="fa-solid fa-house fa-2x"></i></div>
+    <aside>
+        <div id="grupo-icones">
+            <div id="icones">
+                <i class="fa-solid fa-house fa-2x"></i>
+                <i class="fa-solid fa-chalkboard-user fa-2x"></i>
+                <i class="fa-solid fa-calendar-days fa-2x"></i>
+                <i class="fa-solid fa-bell fa-2x"></i>
+                <i class="fa-solid fa-message fa-2x"></i>
+                <i class="fa-solid fa-gear fa-2x"></i>
+            </div>
+            <div id="label">
+                <span>Início</span>
+                <span>Turmas</span>
+                <span>Calendário</span>
+                <span>Avisos</span>
+                <span>Mensagens</span>
+                <span>Configurações</span>
+            </div>
         </div>
-
-        
 
         <div id="perfil">
-            <div id="grupo-nome">
-                <span>Olá, <span id="nome">Nome</span>!</span>
-                <span id="cargo">Professor</span>
-            </div>
-
+            <div id="dropdown"><i class="fa-solid fa-plus fa-2x"></i></div>
             <div id="foto-perfil"></div>
-            <div id="dropdown"><i class="fa-solid fa-chevron-down fa-2x"></i></div>
-        </div>
-    </header>
+        </div>    
+    </aside>
 
-    <div id="grupo-botoes">
-        <button class="botao-acao" id="botao-calendario"><i class="fa-solid fa-plus"></i> Calendário</button>
-        <button class="botao-acao" id="botao-avisos"><i class="fa-solid fa-gears"></i> Avisos</button>
-    </div>
+    
 
     <main>
         <h1>Turmas</h1>
         <div id="grupo-turmas">
             <div id="1" class="card">
-                <h2 class="nome-turma">Turma <span></span></h2>
+                <h2 class="nome-turma">Turma 1<span></span></h2>
                 <div class="grupo-qntd-alunos"><span>Quantidade de Alunos:</span><span class="qntd-alunos">99</span></div>
             </div>
             <div id="2" class="card">
@@ -55,9 +58,13 @@
                 <div class="grupo-qntd-alunos"><span>Quantidade de Alunos:</span><span class="qntd-alunos">99</span></div>
             </div>
         </div>
+
+        <div id="grupo-botoes">
+            <button class="botao-acao" id="botao-calendario"><i class="fa-solid fa-plus"></i> Calendário</button>
+            <button class="botao-acao" id="botao-avisos"><i class="fa-solid fa-gears"></i> Avisos</button>
+        </div>
     </main>
 
-    <script src="main.js"></script>
     <script src="professor.js"></script>
 </body>
 </html>

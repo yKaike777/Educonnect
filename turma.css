@@ -1,12 +1,96 @@
-body{
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+.body{  
     position: relative;
     height: 100vh;
 }
 
-#grupo-alunos{
+main{
+    width: 100%;
+}
+
+thead{
+    color: white;
+    background-color: var(--primary-color);
+}
+
+td{
+    border-bottom: 1px solid #e2e2e2;
+    height: 60px;
+}
+
+td:hover{
+    background-color: #f0f0f0;
+}
+
+#container-turma{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+
+    background-color: var(--background-color);
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+}
+
+aside{
+    background-color: var(--primary-color);
+    color: white;
+    min-width: 200px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#grupo-icones{
+    display: flex;
+    gap: 25px;
+    cursor: pointer;
+}
+
+#icones, #label{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#icones{
+    align-items: center;
+}
+
+#label{
+    justify-content: space-around;
+}
+
+
+#perfil{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    position: relative;
+}
+
+
+#grupo-alunos{
+    display: flex;
+    flex-direction: column;
+    margin-top: 75px;
 }
 
 table{
@@ -64,7 +148,6 @@ td{
     width: 500px;
     height: 550px;
     border-radius: 15px;
-    padding: 15px;
 
     display: flex;
     flex-direction: column;
@@ -73,14 +156,24 @@ td{
 #edicao-notas-menu h1{
     text-align: center;
     margin-bottom: 10px;
+
+    color: white;
+    background-color: var(--primary-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px;
+}
+
+#edicao-notas-menu h2{
+    padding-left: 30px;
 }
 
 #grupo-notas{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 15px;
     margin-top: 50px;
+    padding: 0 30px 0 30px;
 }
 
 
@@ -88,8 +181,15 @@ td{
     position: absolute;
     top: -15px;
     right: -15px;
-    padding: 10px 15px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+
+    shape-outside: circle(50%);
+    clip-path: circle(50%);
 
     border: none;
     background: #ff4d4d;
@@ -117,6 +217,13 @@ section{
     display: flex;
     justify-content: space-between;
     font-size: 1.5rem;
+
+    padding: 5px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+section:hover{
+    background-color: #f0f0f0;
 }
 
 #overlay{

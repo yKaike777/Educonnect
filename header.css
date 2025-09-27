@@ -32,12 +32,6 @@ header{
     flex-direction: column;
 }
 
-#perfil{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
 #nome{
     font-size: 1.6rem;
 }
@@ -49,14 +43,7 @@ header{
     align-self: end;
 }
 
-#foto-perfil{
-    width: 50px;
-    height: 50px;
-    background-color: var(--text-color);
-    shape-outside: circle(50%);
 
-    clip-path: circle(50%);
-}
 
 i{
     cursor: pointer;
