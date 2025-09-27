@@ -56,7 +56,7 @@ alunos.forEach((aluno) => {
                         <td class="nota-primeiro-tri"><span class="nota-text">0,0</span> <i class="fa-solid fa-pen-to-square"></i></td>
                         <td class="nota-segundo-tri"><span class="nota-text">0,0</span> <i class="fa-solid fa-pen-to-square"></i></td>
                         <td class="nota-terceiro-tri"><span class="nota-text">0,0</span> <i class="fa-solid fa-pen-to-square"></i></td>
-                        <td class="presenca"><button class="botao-presenca">Sim</button></td>                      
+                        <td class="status">Aprovado</td>                      
                    </tr>
                     `;
 
@@ -78,19 +78,6 @@ const nomeProfessor = document.getElementById('professor');
 nomeProfessor.textContent = sessionStorage.getItem('nome');
 
 
-const presencaBotao = document.querySelectorAll('.botao-presenca');
-presencaBotao.forEach(botao => {
-    botao.addEventListener('click', () => {
-        botao.classList.toggle('ausente');
-
-        if (botao.classList.contains('ausente')) {
-            botao.textContent = 'Não';
-        } else {
-            botao.textContent = 'Sim';
-        }
-    });
-});
-
 // Adiciona funcionalidade de edição de notas
 let celulaEditando = null;
 const iconesEdicao = document.querySelectorAll('.fa-pen-to-square');
@@ -102,8 +89,23 @@ iconesEdicao.forEach((icone) => {
         let iconeClicado = e.currentTarget
         celulaEditando = iconeClicado.parentElement;
         
+        // Define o trimestre no menu
+        const classeCelula = celulaEditando.classList[0]; // Exemplo: "nota-primeiro-tri"
+        let trimestre = '';
+        if (classeCelula === 'nota-primeiro-tri') {
+            trimestre = '1º Trimestre';
+        } else if (classeCelula === 'nota-segundo-tri') {
+            trimestre = '2º Trimestre';
+        } else if (classeCelula === 'nota-terceiro-tri') {
+            trimestre = '3º Trimestre';
+        }
+        document.getElementById('trimestre').textContent = trimestre;
+
+        let nomeAlunoEditando = celulaEditando.parentElement.querySelector('.nome-aluno').textContent
+
         // Nome do aluno no menu
-        document.getElementById('nome-aluno').textContent = celulaEditando.parentElement.querySelector('.nome-aluno').textContent;
+        document.getElementById('nome-aluno-menu').textContent = nomeAlunoEditando;
+
     })
 })
 
@@ -137,4 +139,21 @@ const botaoSalvar = document.getElementById('salvar-notas');
 botaoSalvar.addEventListener('click', () => {
     document.getElementById('overlay').style.display = 'none';
     atualizarNotas();
+    atualizarNotasDatabase()
 })
+
+function atualizarNotasDatabase(){
+    let notas = []
+    let nomeAluno = document.getElementById('nome-aluno-menu').textContent
+
+    const notaPrimeiroTri = document.querySelector('.nota-primeiro-tri .nota-text').textContent
+    const notaSegundoTri = document.querySelector('.nota-segundo-tri .nota-text').textContent
+    const notaTerceiroTri = document.querySelector('.nota-terceiro-tri .nota-text').textContent
+
+    notas = [notaPrimeiroTri, notaSegundoTri, notaTerceiroTri]
+
+    const aluno = database.alunos.find(aluno => aluno.nome == nomeAluno).id
+    database.alunos[aluno - 1].notas = notas
+
+    console.log(database.alunos[aluno - 1])
+}
