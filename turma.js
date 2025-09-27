@@ -173,25 +173,59 @@ botaoSalvar.addEventListener('click', () => {
     atualizarNotasDatabase()
 })
 
-function atualizarNotasDatabase(){
-    let notas = []
-    let nomeAluno = document.getElementById('nome-aluno-menu').textContent
+function atualizarNotasDatabase() {
+    let nomeAluno = document.getElementById('nome-aluno-menu').textContent;
 
-    const notaPrimeiroTri = document.querySelector('.nota-primeiro-tri .nota-text').textContent
-    const notaSegundoTri = document.querySelector('.nota-segundo-tri .nota-text').textContent
-    const notaTerceiroTri = document.querySelector('.nota-terceiro-tri .nota-text').textContent
+    // Pega a linha do aluno que está sendo editado
+    let linhaAluno = celulaEditando.parentElement;
 
-    notas = [notaPrimeiroTri, notaSegundoTri, notaTerceiroTri]
+    const notaPrimeiroTri = linhaAluno.querySelector('.nota-primeiro-tri .nota-text').textContent;
+    const notaSegundoTri = linhaAluno.querySelector('.nota-segundo-tri .nota-text').textContent;
+    const notaTerceiroTri = linhaAluno.querySelector('.nota-terceiro-tri .nota-text').textContent;
 
-    const aluno = database.alunos.find(aluno => aluno.nome == nomeAluno).id
-    database.alunos[aluno - 1].notas = notas
+    const notas = [notaPrimeiroTri, notaSegundoTri, notaTerceiroTri];
 
-    console.log(database.alunos[aluno - 1])
+    // Salva no localStorage
+    localStorage.setItem(nomeAluno, JSON.stringify(notas));
+
+    // Atualiza também no "database"
+    const aluno = database.alunos.find(aluno => aluno.nome === nomeAluno);
+    if (aluno) {
+        aluno.notas = notas;
+        console.log(aluno);
+    }
 }
 
+
 window.addEventListener("DOMContentLoaded", () => {
+  // Foto do perfil
   const fotoSalva = localStorage.getItem("fotoPerfil");
   if (fotoSalva) {
     document.getElementById("foto-perfil-usuario").src = fotoSalva;
   }
+
+  // Notas dos alunos
+  database.alunos.forEach((aluno) => {
+    const notasSalvas = localStorage.getItem(aluno.nome);
+    if (notasSalvas) {
+      const notas = JSON.parse(notasSalvas);
+      aluno.notas = notas;
+
+      // Atualiza a linha do aluno na tabela
+      const linha = document.getElementById(aluno.id);
+      if (linha) {
+        const spansNotas = [
+          linha.querySelector(".nota-primeiro-tri .nota-text"),
+          linha.querySelector(".nota-segundo-tri .nota-text"),
+          linha.querySelector(".nota-terceiro-tri .nota-text"),
+        ];
+
+        notas.forEach((nota, index) => {
+          if (spansNotas[index]) {
+            spansNotas[index].textContent = nota;
+          }
+        });
+      }
+    }
+  });
 });

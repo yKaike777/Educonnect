@@ -116,3 +116,13 @@ if (localStorage.getItem('modoEscuro') === 'ativado'){
     document.documentElement.style.setProperty('--title-color-dark', '#383F6B');
     document.documentElement.style.setProperty('--card-background', '#ffffff');
 }
+
+const qntdAlunos = document.querySelectorAll('.qntd-alunos')
+
+qntdAlunos.forEach((qntd) => {
+    const id = qntd.getAttribute('id')
+    const alunos = database.alunos.filter(aluno => aluno.turmaID == id)
+
+    qntd.textContent = alunos.length
+})
+
