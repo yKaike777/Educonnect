@@ -1,5 +1,7 @@
 :root{
     --primary-color: #383F6B;
+    --title-color-dark: #383F6B;
+    --card-background: #ffffff;
     --secondary-color: #ff6600;
     --background-color: #f4f4f4;
     --text-color: #333;
@@ -16,6 +18,7 @@
 }
 
 body{
+    background-color: var(--background-color);
     display: flex;
     height: 100vh;
 }
@@ -70,7 +73,7 @@ aside{
 }
 
 h1{
-    color: var(--primary-color);
+    color: var(--title-color-dark);
 }
 
 #grupo-botoes{
@@ -115,7 +118,7 @@ main{
     height: 150px;
     padding: 10px;
 
-    background-color: var(--background-color);
+    background-color: var(--card-background);
     cursor: pointer;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
@@ -129,6 +132,7 @@ main{
 .grupo-qntd-alunos{
     display: flex;
     justify-content: space-between;
+    color: var(--text-color);
 }
 
 #foto-perfil{
@@ -143,7 +147,7 @@ main{
 }
 
 .nome-turma{
-    color: var(--primary-color);
+    color: var(--title-color-dark);
 }
 
 #avisos{
