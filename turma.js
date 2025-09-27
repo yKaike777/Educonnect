@@ -157,3 +157,10 @@ function atualizarNotasDatabase(){
 
     console.log(database.alunos[aluno - 1])
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  const fotoSalva = localStorage.getItem("fotoPerfil");
+  if (fotoSalva) {
+    document.getElementById("foto-perfil-usuario").src = fotoSalva;
+  }
+});

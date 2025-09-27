@@ -1,14 +1,25 @@
 const inputFoto = document.getElementById("input-foto");
+const preview = document.getElementById("foto-preview");
 const btnUpload = document.getElementById("btn-upload");
 
 btnUpload.addEventListener("click", () => {
-  inputFoto.click(); // abre o seletor de arquivos
+  inputFoto.click();
 });
 
-inputFoto.addEventListener("change", function() {
-  const arquivo = this.files[0];
-  if (arquivo) {
-    document.getElementById("foto-preview").src = URL.createObjectURL(arquivo);
+inputFoto.addEventListener("change", function () {
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const base64Image = e.target.result;
+
+      // mostra a foto no preview
+      preview.src = base64Image;
+
+      // salva no localStorage
+      localStorage.setItem("fotoPerfil", base64Image);
+    };
+    reader.readAsDataURL(file);
   }
 });
 

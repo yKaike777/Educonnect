@@ -58,3 +58,10 @@ const fotoPerfil = document.getElementById('foto-perfil')
 fotoPerfil.addEventListener('click', () => {
     window.location.href = 'configuracoes.html'
 })
+
+window.addEventListener("DOMContentLoaded", () => {
+  const fotoSalva = localStorage.getItem("fotoPerfil");
+  if (fotoSalva) {
+    document.getElementById("foto-perfil-usuario").src = fotoSalva;
+  }
+});
