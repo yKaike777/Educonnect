@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="configuracoes.css">
+    <title>Configurações - Educonnect</title>
+</head>
+<body>
+    <aside>
+        <h2 id="config-title">Configurações</h2>
+
+        <ul>
+            <li><a href="#geral">Geral</a></li>
+            <li><a href="#acessibilidade">Acessibilidade</a></li>
+            <li><a href="#perfil">Perfil</a></li>
+            <li><a href="professor.html">Sair</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div id="geral">
+            <h1>Configurações Gerais</h1>
+        </div>
+        
+        <div id="acessibilidade">
+            <h1>Configurações de Acessibilidade</h1>
+
+            <div id="container-acessibilidade">
+                <div id="modo-escuro">
+                    <label class="switch">
+                        <input type="checkbox" id="toggle-dark">
+                        <span class="slider"></span>
+                    </label>
+                    Modo Escuro
+
+                </div>
+            </div>
+        </div>
+        
+        <div id="perfil">
+            <h1>Configurações do Perfil</h1>
+
+            <div id="container-perfil">
+                <div id="container-foto-perfil" class="card">
+                    <h2>Mudar Foto de Perfil</h2>
+
+                    <div class="file-upload">
+                    <input type="file" id="input-foto" accept="image/*">
+                    <button type="button" id="btn-upload" class="btn">Escolher foto</button>
+                    </div>
+
+                    <img id="foto-preview" src="" alt="Foto de perfil" width="150" height="150" style="border-radius: 50%;">
+                    
+                </div>
+
+                <div id="container-nome-perfil" class="card">
+                    <h2>Mudar Nome de Perfil</h2>
+                    <input type="text" id="input-nome" placeholder="Nome Atual">
+                    <button onclick="mudarNome()" class="btn">Mudar Nome</button>
+                </div>
+            </div> 
+        </div>
+        
+    </main>
+
+    <script src="configuracoes.js"></script>
+</body>
+</html>

@@ -52,3 +52,9 @@ function criarAviso(){
     avisoTitulo.value = ""
     avisoConteudo.value = ""
 }
+
+const fotoPerfil = document.getElementById('foto-perfil')
+
+fotoPerfil.addEventListener('click', () => {
+    window.location.href = 'configuracoes.html'
+})
