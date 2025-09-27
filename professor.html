@@ -63,6 +63,30 @@
             <button class="botao-acao" id="botao-calendario"><i class="fa-solid fa-plus"></i> Calendário</button>
             <button class="botao-acao" id="botao-avisos"><i class="fa-solid fa-gears"></i> Avisos</button>
         </div>
+        
+        <div id="avisos">
+            <h1>Avisos</h1>
+
+            <div id="titulo-aviso">
+                <input type="text" id="input-titulo-aviso" placeholder="Título do Aviso...">
+            </div>
+
+            <div id="descricao-aviso">
+                <textarea id="input-descricao-aviso" placeholder="Descrição do Aviso..."></textarea>
+            </div>
+
+            <div id="grupo-visibilidade">
+                <select name="visibilidade" id="visibilidade">
+                    <option value="0" selected>Todos</option>
+                    <option value="1" >Ninguém</option>
+                    <option value="2" id="opt-turma-1">Turma 1</option>
+                    <option value="3" id="opt-turma-2">Turma 2</option>
+                    <option value="4" id="opt-turma-3">Turma 3</option>
+                    <option value="5" id="opt-turma-4">Turma 4</option>
+                </select>
+                <button class="botao-acao" id="botao-criar-aviso" onclick="criarAviso()"><i class="fa-solid fa-check"></i> Criar Aviso</button>
+            </div>
+            
     </main>
 
     <script src="professor.js"></script>

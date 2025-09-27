@@ -42,3 +42,13 @@ cardsTurma.forEach((card) => {
         window.location.href = `turma.html?turmaID=${ID}`;
     })
 })
+
+function criarAviso(){
+    const avisoTitulo = document.getElementById("input-titulo-aviso")
+    const avisoConteudo = document.getElementById("input-descricao-aviso")
+    
+    alert(`Aviso criado com sucesso!\nTítulo: ${avisoTitulo.value}\nConteúdo: ${avisoConteudo.value}`)
+
+    avisoTitulo.value = ""
+    avisoConteudo.value = ""
+}

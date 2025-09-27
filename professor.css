@@ -5,6 +5,7 @@
     --text-color: #333;
     --border-radius: 5px;
     --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --border-color: #e2e2e2;
 }
 
 *{
@@ -85,7 +86,7 @@ h1{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
 }
 
 .botao-acao:hover{
@@ -112,12 +113,12 @@ main{
 
     background-color: var(--background-color);
     cursor: pointer;
-    border: 1px solid #e2e2e2;
-    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
 }
 
 .card:hover{
-    background-color: #e2e2e2;
+    background-color: var(--border-color);
     transform: translateY(-5px);
 }
 
@@ -135,4 +136,48 @@ main{
     clip-path: circle(50%);
 
     cursor: pointer;
+}
+
+.nome-turma{
+    color: var(--primary-color);
+}
+
+#avisos{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+textarea{
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    resize: none;
+}
+
+select{
+    width: 100px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+#grupo-visibilidade{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
