@@ -36,7 +36,7 @@ aside {
 }
 
 #config-title {
-  color: var(--title-color);
+  color: white;
   font-size: 1.8rem;
   margin-bottom: 30px;
   text-align: center;
@@ -54,7 +54,7 @@ li {
 
 a {
   text-decoration: none;
-  color: var(--title-color);
+  color: white;
   font-weight: 600;
   padding: 10px 15px;
   display: block;

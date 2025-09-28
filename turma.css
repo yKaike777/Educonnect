@@ -1,3 +1,16 @@
+:root{
+    --primary-color: #383F6B;
+    --title-color-dark: #383F6B;
+    --card-background: #ffffff;
+    --secondary-color: #ff6600;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --border-radius: 5px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --border-color: #e2e2e2;
+    --hover: #f0f0f0;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -20,12 +33,13 @@ thead{
 }
 
 td{
+    color: var(--text-color);
     border-bottom: 1px solid #e2e2e2;
     height: 60px;
 }
 
 td:hover{
-    background-color: #f0f0f0;
+    background-color: var(--hover);
 }
 
 #container-turma{
@@ -104,6 +118,10 @@ table th{
 .aluno{
     text-align: center;
     height: 50px;
+}
+
+.info{
+    color: var(--text-color);
 }
 
 td{
