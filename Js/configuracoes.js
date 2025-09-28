@@ -13,10 +13,8 @@ inputFoto.addEventListener("change", function () {
     reader.onload = function (e) {
       const base64Image = e.target.result;
 
-      // mostra a foto no preview
       preview.src = base64Image;
 
-      // salva no localStorage
       localStorage.setItem("fotoPerfil", base64Image);
     };
     reader.readAsDataURL(file);
