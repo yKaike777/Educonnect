@@ -46,118 +46,126 @@
     </aside>
 
     
-
-    <main>
-        <h1 id="turmas">Turmas</h1>
-        <div id="grupo-turmas">
-            <div id="1" class="card">
-                <h2 class="nome-turma">Turma 1<span></span></h2>
-                <div class="grupo-qntd-alunos"><span>Quantidade de Alunos:</span><span class="qntd-alunos" id="1">99</span></div>
-            </div>
-            <div id="2" class="card">
-                <h2 class="nome-turma">Turma 2</h2>
-                <div class="grupo-qntd-alunos"><span>Quantidade de Alunos:</span><span class="qntd-alunos" id="2">99</span></div>
-            </div>
-            <div id="3" class="card">
-                <h2 class="nome-turma">Turma 3</h2>
-                <div class="grupo-qntd-alunos"><span>Quantidade de Alunos:</span><span class="qntd-alunos" id="3">99</span></div>
-            </div>
-            <div id="4" class="card">
-                <h2 class="nome-turma">Turma 4</h2>
-                <div class="grupo-qntd-alunos"><span>Quantidade de Alunos:</span><span class="qntd-alunos" id="4">99</span></div>
-            </div>
-        </div>
-
-        <hr>
-        
-        <div id="avisos">
-            <h1>Avisos</h1>
-
-            <div id="titulo-aviso">
-                <input type="text" id="input-titulo-aviso" placeholder="Título do Aviso...">
-            </div>
-
-            <div id="descricao-aviso">
-                <textarea id="input-descricao-aviso" placeholder="Descrição do Aviso..."></textarea>
-            </div>
-
-            <div id="grupo-visibilidade">
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                    <label for="visibilidade" style="color: var(--title-color-dark);">Quem poderá ver esse aviso?</label>
-                    <select name="visibilidade" id="visibilidade">
-                        <option value="0" selected>Todos</option>
-                        <option value="1" >Ninguém</option>
-                        <option value="2" id="opt-turma-1">Turma 1</option>
-                        <option value="3" id="opt-turma-2">Turma 2</option>
-                        <option value="4" id="opt-turma-3">Turma 3</option>
-                        <option value="5" id="opt-turma-4">Turma 4</option>
-                    </select>
+    <div style="width: 100%;">
+        <main>
+            <h1 id="turmas">Turmas</h1>
+            <div id="grupo-turmas">
+                <div id="1" class="card">
+                    <h2 class="nome-turma">Turma 1<span></span></h2>
+                    <div class="grupo-qntd-alunos"><span>Quantidade de Alunos:</span><span class="qntd-alunos" id="1">99</span></div>
                 </div>
-                
-                <button class="botao-acao" id="botao-criar-aviso" onclick="criarAviso()"><i class="fa-solid fa-check"></i> Criar Aviso</button>
+                <div id="2" class="card">
+                    <h2 class="nome-turma">Turma 2</h2>
+                    <div class="grupo-qntd-alunos"><span>Quantidade de Alunos:</span><span class="qntd-alunos" id="2">99</span></div>
+                </div>
+                <div id="3" class="card">
+                    <h2 class="nome-turma">Turma 3</h2>
+                    <div class="grupo-qntd-alunos"><span>Quantidade de Alunos:</span><span class="qntd-alunos" id="3">99</span></div>
+                </div>
+                <div id="4" class="card">
+                    <h2 class="nome-turma">Turma 4</h2>
+                    <div class="grupo-qntd-alunos"><span>Quantidade de Alunos:</span><span class="qntd-alunos" id="4">99</span></div>
+                </div>
             </div>
+
+            <hr>
             
-            <div id="calendario" style="text-align: center;">
-                <h1>Calendário</h1>
+            <div id="avisos">
+                <h1>Avisos</h1>
 
-                <div id="container-calendario">
-                    <div id="container-data" style="color: var(--title-color-dark);">
-                        <i class="fa-solid fa-chevron-left fa-2x"></i>
-                        <span id="data" style="font-size: 2rem;">00.00.0000</span>
-                        <i class="fa-solid fa-chevron-right fa-2x"></i>
-                    </div>
+                <div id="titulo-aviso">
+                    <input type="text" id="input-titulo-aviso" placeholder="Título do Aviso...">
+                </div>
 
-                    <div style="display: flex; gap: 20px; justify-content: center;">
-                        <div class="card-calendario" id="dia-1">
-                            <div class="card-header" >
-                                <h2 class="dia-semana" data-offset="-2">Seg</h2>
-                                <span class="dia" data-offset="-2">00.00.0000</span>
-                            </div>
-                            <div class="card-body" contenteditable="true">
-                                Eventos
-                            </div>
-                        </div>
-                        <div class="card-calendario" id="dia-2" >
-                            <div class="card-header">
-                                <h2 class="dia-semana" data-offset="-1">Ter</h2>
-                                <span class="dia" data-offset="-1">00.00.0000</span>
-                            </div>
-                            <div class="card-body" contenteditable="true">
-                                Eventos
-                            </div>
-                        </div>
-                        <div class="card-calendario" id="dia-3" >
-                            <div class="card-header">
-                                <h2 class="dia-semana" data-offset="0">Qua</h2>
-                                <span class="dia" data-offset="0">00.00.0000</span>
-                            </div>
-                            <div class="card-body" contenteditable="true">
-                                Eventos
-                            </div>
-                        </div>
-                        <div class="card-calendario" id="dia-4" >
-                            <div class="card-header">
-                                <h2 class="dia-semana" data-offset="1">Qui</h2>
-                                <span class="dia" data-offset="1">00.00.0000</span>
-                            </div>
-                            <div class="card-body" contenteditable="true">
-                                Eventos
-                            </div>
-                        </div>
-                        <div class="card-calendario" id="dia-5" >
-                            <div class="card-header">
-                                <h2 class="dia-semana" data-offset="2">Sex</h2>
-                                <span class="dia" data-offset="2">00.00.0000</span>
-                            </div>
-                            <div class="card-body" contenteditable="true">
-                                Eventos
-                            </div>
-                        </div>
+                <div id="descricao-aviso">
+                    <textarea id="input-descricao-aviso" placeholder="Descrição do Aviso..."></textarea>
+                </div>
+
+                <div id="grupo-visibilidade">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <label for="visibilidade" style="color: var(--title-color-dark);">Quem poderá ver esse aviso?</label>
+                        <select name="visibilidade" id="visibilidade">
+                            <option value="0" selected>Todos</option>
+                            <option value="1" >Ninguém</option>
+                            <option value="2" id="opt-turma-1">Turma 1</option>
+                            <option value="3" id="opt-turma-2">Turma 2</option>
+                            <option value="4" id="opt-turma-3">Turma 3</option>
+                            <option value="5" id="opt-turma-4">Turma 4</option>
+                        </select>
                     </div>
                     
+                    <button class="botao-acao" id="botao-criar-aviso" onclick="criarAviso()"><i class="fa-solid fa-check"></i> Criar Aviso</button>
                 </div>
-            </div>
-    </main>
+                
+                <div id="calendario" style="text-align: center;">
+                    <h1>Calendário</h1>
+
+                    <div id="container-calendario">
+                        <div id="container-data" style="color: var(--title-color-dark);">
+                            <i class="fa-solid fa-chevron-left fa-2x"></i>
+                            <span id="data" style="font-size: 2rem;">00.00.0000</span>
+                            <i class="fa-solid fa-chevron-right fa-2x"></i>
+                        </div>
+
+                        <div style="display: flex; gap: 20px; justify-content: center;">
+                            <div class="card-calendario" id="dia-1">
+                                <div class="card-header" >
+                                    <h2 class="dia-semana" data-offset="-2">Seg</h2>
+                                    <span class="dia" data-offset="-2">00.00.0000</span>
+                                </div>
+                                <div class="card-body" contenteditable="true">
+                                    Eventos
+                                </div>
+                            </div>
+                            <div class="card-calendario" id="dia-2" >
+                                <div class="card-header">
+                                    <h2 class="dia-semana" data-offset="-1">Ter</h2>
+                                    <span class="dia" data-offset="-1">00.00.0000</span>
+                                </div>
+                                <div class="card-body" contenteditable="true">
+                                    Eventos
+                                </div>
+                            </div>
+                            <div class="card-calendario" id="dia-3" >
+                                <div class="card-header">
+                                    <h2 class="dia-semana" data-offset="0">Qua</h2>
+                                    <span class="dia" data-offset="0">00.00.0000</span>
+                                </div>
+                                <div class="card-body" contenteditable="true">
+                                    Eventos
+                                </div>
+                            </div>
+                            <div class="card-calendario" id="dia-4" >
+                                <div class="card-header">
+                                    <h2 class="dia-semana" data-offset="1">Qui</h2>
+                                    <span class="dia" data-offset="1">00.00.0000</span>
+                                </div>
+                                <div class="card-body" contenteditable="true">
+                                    Eventos
+                                </div>
+                            </div>
+                            <div class="card-calendario" id="dia-5" >
+                                <div class="card-header">
+                                    <h2 class="dia-semana" data-offset="2">Sex</h2>
+                                    <span class="dia" data-offset="2">00.00.0000</span>
+                                </div>
+                                <div class="card-body" contenteditable="true">
+                                    Eventos
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+        </main>
+
+                <footer>
+                    <span>Criado por <a href="https://github.com/yKaike777" class="link">@Kaike</a>, <a href="https://github.com/yKaike777" class="link">@Pietro</a> e <a href="https://github.com/yKaike777" class="link">@Cappeletti</a></span>
+                </footer>
+    </div>
+
 
     <script src="professor.js"></script>
 </body>
