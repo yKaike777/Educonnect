@@ -215,6 +215,9 @@ window.addEventListener("DOMContentLoaded", () => {
     if (fotoSalva) {
     document.getElementById("foto-perfil-usuario").src = fotoSalva;
     }
+    
+    const nome = document.getElementById('nome')
+    nome.textContent = sessionStorage.getItem('nome')
 
     database.alunos.forEach((aluno) => {
         const dadosSalvos = localStorage.getItem(aluno.nome);

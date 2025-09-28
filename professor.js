@@ -118,6 +118,9 @@ window.addEventListener("DOMContentLoaded", () => {
   if (fotoSalva) {
     document.getElementById("foto-perfil-usuario").src = fotoSalva;
   }
+
+  const nome = document.getElementById('nome')
+  nome.textContent = sessionStorage.getItem('nome')
 });
 
 if (localStorage.getItem('modoEscuro') === 'ativado'){
@@ -125,10 +128,11 @@ if (localStorage.getItem('modoEscuro') === 'ativado'){
     document.documentElement.style.setProperty('--text-color', '#f4f4f4');
     document.documentElement.style.setProperty('--primary-color', '#252545');
     document.documentElement.style.setProperty('--secondary-color', '#ff6600');
-    document.documentElement.style.setProperty('--border-color', '#333');
+    document.documentElement.style.setProperty('--border-color', '#dbdbdbff');
     document.documentElement.style.setProperty('--title-color', '#ffffff');
     document.documentElement.style.setProperty('--title-color-dark', '#ffffff');
     document.documentElement.style.setProperty('--card-background', '#383F6B');
+    document.documentElement.style.setProperty('--hover', '#191927ff');
 } else{
     document.documentElement.style.setProperty('--background-color', '#f4f4f4');
     document.documentElement.style.setProperty('--text-color', '#333');
@@ -137,6 +141,7 @@ if (localStorage.getItem('modoEscuro') === 'ativado'){
     document.documentElement.style.setProperty('--border-color', '#e2e2e2');
     document.documentElement.style.setProperty('--title-color-dark', '#383F6B');
     document.documentElement.style.setProperty('--card-background', '#ffffff');
+    document.documentElement.style.setProperty('--hover', '#f0f0f0');
 }
 
 const qntdAlunos = document.querySelectorAll('.qntd-alunos')

@@ -94,7 +94,6 @@ h1 {
   font-size: 1.3rem;
 }
 
-/* File upload custom */
 .file-upload {
   display: flex;
   gap: 15px;
@@ -127,7 +126,7 @@ h1 {
     padding: 10px 20px;
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
-    background-color: var(--background-color);
+    background-color: #f4f4f4;
 }
 
 /* Foto de perfil */

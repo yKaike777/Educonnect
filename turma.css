@@ -104,11 +104,12 @@ aside{
 #grupo-alunos{
     display: flex;
     flex-direction: column;
-    margin-top: 75px;
+    margin-top: 50px;
 }
 
 table{
     width: 100%;
+    margin-bottom: 50px;
 }
 
 table th{
