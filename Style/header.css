@@ -1,0 +1,51 @@
+:root{
+    --primary-color: #383F6B;
+    --secondary-color: #ff6600;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --border-radius: 5px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+header{
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#grupo-logo{
+    display: flex;
+}
+
+#grupo-nome{
+    display: flex;
+    flex-direction: column;
+}
+
+#nome{
+    font-size: 1.6rem;
+}
+
+#cargo{
+    font-size: 1rem;
+    margin-top: -8px;
+    color: var(--secondary-color);
+    align-self: end;
+}
+
+
+
+i{
+    cursor: pointer;
+}
+

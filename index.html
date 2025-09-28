@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/login.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <title>Login - Educonnect</title>
+</head>
+<body>
+    <div id="overlay"></div>
+    <div id="container">
+        <h1>Login</h1>
+
+        <div id="formulario">
+            <div class="input-group">
+                <label for="nome">Nome / Email:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+                
+            <div class="input-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+
+            <div id="radio-group">
+                <div>
+                    <input type="radio" id="professor" name="aluno-professor" value="professor" checked />
+                    <label for="professor">Professor</label>
+
+                </div>
+                    
+                <div>
+                    <input type="radio" id="aluno" name="aluno-professor" value="aluno" />
+                    <label for="aluno">Aluno</label>
+                </div>
+            </div>
+        </div>
+    
+        <button onclick="entrar()">Entrar</button>
+
+    </div>
+
+    <footer>Criado por <a href="https://github.com/yKaike777">@Kaike</a>, <a href="https://github.com/yKaike777">@Pietro</a> e <a href="https://github.com/yKaike777">@Cappeletti</a></footer>
+
+    <script src="Js/login.js"></script>
+</body>
+</html>

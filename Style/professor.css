@@ -1,0 +1,268 @@
+:root{
+    --primary-color: #383F6B;
+    --title-color-dark: #383F6B;
+    --card-background: #ffffff;
+    --secondary-color: #ff6600;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --border-radius: 5px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --border-color: #e2e2e2;
+    --hover: #f0f0f0;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+body{
+    background-color: var(--background-color);
+    display: flex;
+    height: 100vh;
+}
+
+aside{
+    background-color: var(--primary-color);
+    color: white;
+    width: 250px;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: fixed;
+}
+
+#grupo-icones{
+    display: flex;
+    gap: 25px;
+    cursor: pointer;
+}
+
+#icones, #label{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#icones{
+    align-items: center;
+}
+
+#label{
+    justify-content: space-around;
+}
+
+
+#perfil{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    align-items: start;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    position: relative;
+}
+
+h1{
+    color: var(--title-color-dark);
+}
+
+#grupo-botoes{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.botao-acao{
+    background-color: var(--secondary-color);
+    border: none;
+    color: white;
+    font-family: 'open-sans', sans-serif;
+    padding: 15px 32px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+}
+
+.botao-acao:hover{
+    background-color: #e65c00;
+    transform: translateY(-2px);
+}
+
+main{
+    padding: 20px;
+    margin-left: 250px;
+    width: 80%;
+}
+
+#grupo-turmas{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.card{
+    width: 350px;
+    height: 150px;
+    padding: 10px;
+
+    background-color: var(--card-background);
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.card:hover{
+    background-color: var(--hover);
+    transform: translateY(-5px);
+}
+
+.grupo-qntd-alunos{
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-color);
+}
+
+#foto-perfil{
+    width: 50px;
+    height: 50px;
+    background-color: var(--text-color);
+    shape-outside: circle(50%);
+
+    clip-path: circle(50%);
+
+    cursor: pointer;
+}
+
+.nome-turma{
+    color: var(--title-color-dark);
+}
+
+#avisos{
+    display: flex;
+    flex-direction: column;
+}
+
+#input-titulo-aviso{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+#input-descricao-aviso{
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    resize: none;
+}
+
+#visibilidade{
+    width: 100px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+#grupo-visibilidade{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+#container-calendario{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#container-calendario i{
+    cursor: pointer;
+}
+
+.card-calendario{
+    width: 250px;
+    height: 550px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: var(--title-color-dark);
+}
+
+.card-header{
+    width: 100%;
+    height: 15%;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    color: var(--background-color);
+    cursor: pointer;
+}
+
+.card-body{
+    width: 100%;
+    height: 85%;
+    padding: 10px;
+
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-align: start;
+}
+
+#container-data{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer{
+    height: 100px;
+    margin-left: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #333;
+    color: white;
+}
