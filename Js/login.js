@@ -5,10 +5,10 @@ function entrar() {
     if (nome){
 
         if (radio.value === "aluno") {
-            alert(`Bem-vindo, ${nome}! Entrando como Aluno...`)
+            alert('Função em Desenvolvimento!')
             sessionStorage.clear()
             sessionStorage.setItem("nome", nome)
-            window.location.href = "aluno.html"
+            // window.location.href = "aluno.html"
         } else if (radio.value === "professor") {
             alert(`Bem-vindo, ${nome}! Entrando como Professor...`)
             sessionStorage.clear()

@@ -77,3 +77,9 @@ window.addEventListener("DOMContentLoaded", () => {
     preview.src = fotoSalva;
   }
 })
+
+const toggleLetra = document.getElementById("toggle-letra-maior");
+
+toggleLetra.addEventListener('click', () => {
+  alert('Função em Desenvolvimento!')
+})
