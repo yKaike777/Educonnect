@@ -74,7 +74,6 @@ const qntdAlunos = document.getElementById('qntd-alunos');
 qntdAlunos.textContent = `${alunos.length}`;
 
 alunos.forEach((aluno) => {
-    // Adiciona uma nova linha para cada aluno
     const tabela = document.querySelector('tbody');
     const linha = document.createElement('tr');
 
@@ -88,7 +87,7 @@ alunos.forEach((aluno) => {
                         <td class="nota-primeiro-tri"><span class="nota-text">0,0</span> <i class="fa-solid fa-pen-to-square"></i></td>
                         <td class="nota-segundo-tri"><span class="nota-text">0,0</span> <i class="fa-solid fa-pen-to-square"></i></td>
                         <td class="nota-terceiro-tri"><span class="nota-text">0,0</span> <i class="fa-solid fa-pen-to-square"></i></td>
-                        <td class="status">Aprovado</td>                      
+                        <td class="status">Reprovado(a)</td>                      
                    </tr>
                     `;
 
@@ -96,7 +95,6 @@ alunos.forEach((aluno) => {
 });
 
 
-// Preenche os nomes dos alunos e números de chamada
 const nomeTabela = document.querySelectorAll('.nome-aluno');
 
 nomeTabela.forEach((aluno, index) => {
@@ -110,7 +108,6 @@ const nomeProfessor = document.getElementById('professor');
 nomeProfessor.textContent = sessionStorage.getItem('nome');
 
 
-// Adiciona funcionalidade de edição de notas
 let celulaEditando = null;
 const iconesEdicao = document.querySelectorAll('.fa-pen-to-square');
 
@@ -121,8 +118,7 @@ iconesEdicao.forEach((icone) => {
         let iconeClicado = e.currentTarget
         celulaEditando = iconeClicado.parentElement;
         
-        // Define o trimestre no menu
-        const classeCelula = celulaEditando.classList[0]; // Exemplo: "nota-primeiro-tri"
+        const classeCelula = celulaEditando.classList[0];
         let trimestre = '';
         if (classeCelula === 'nota-primeiro-tri') {
             trimestre = '1º Trimestre';
@@ -135,7 +131,6 @@ iconesEdicao.forEach((icone) => {
 
         let nomeAlunoEditando = celulaEditando.parentElement.querySelector('.nome-aluno').textContent
 
-        // Nome do aluno no menu
         document.getElementById('nome-aluno-menu').textContent = nomeAlunoEditando;
 
     })
@@ -177,7 +172,6 @@ botaoSalvar.addEventListener('click', () => {
 function atualizarNotasDatabase() {
     let nomeAluno = document.getElementById('nome-aluno-menu').textContent;
 
-    // Pega a linha do aluno que está sendo editado
     let linhaAluno = celulaEditando.parentElement;
 
     const notaPrimeiroTri = linhaAluno.querySelector('.nota-primeiro-tri .nota-text').textContent;
@@ -186,50 +180,73 @@ function atualizarNotasDatabase() {
 
     const notas = [notaPrimeiroTri, notaSegundoTri, notaTerceiroTri];
 
-    // Salva no localStorage
-    localStorage.setItem(nomeAluno, JSON.stringify(notas));
+    const n1 = parseFloat(notaPrimeiroTri.replace(',', '.')) || 0;
+    const n2 = parseFloat(notaSegundoTri.replace(',', '.')) || 0;
+    const n3 = parseFloat(notaTerceiroTri.replace(',', '.')) || 0;
+
+    const notaFinalTotal = n1 + (n2 * 2) + (n3 * 3);
+    const status = notaFinalTotal >= 36 ? "Aprovado(a)" : "Reprovado(a)";
+
+    linhaAluno.querySelector('.status').textContent = status;
+
+    const dadosAluno = {
+        notas: notas,
+        status: status
+    };
+    localStorage.setItem(nomeAluno, JSON.stringify(dadosAluno));
 
     // Atualiza também no "database"
     const aluno = database.alunos.find(aluno => aluno.nome === nomeAluno);
     if (aluno) {
         aluno.notas = notas;
+        aluno.status = status;
         console.log(aluno);
     }
 }
 
+const fotoPerfil = document.getElementById('foto-perfil')
+
+fotoPerfil.addEventListener('click', () => {
+    window.location.href = 'configuracoes.html'
+})
 
 window.addEventListener("DOMContentLoaded", () => {
-  // Foto do perfil
-  const fotoSalva = localStorage.getItem("fotoPerfil");
-  if (fotoSalva) {
+    const fotoSalva = localStorage.getItem("fotoPerfil");
+    if (fotoSalva) {
     document.getElementById("foto-perfil-usuario").src = fotoSalva;
-  }
-
-  // Notas dos alunos
-  database.alunos.forEach((aluno) => {
-    const notasSalvas = localStorage.getItem(aluno.nome);
-    if (notasSalvas) {
-      const notas = JSON.parse(notasSalvas);
-      aluno.notas = notas;
-
-      // Atualiza a linha do aluno na tabela
-      const linha = document.getElementById(aluno.id);
-      if (linha) {
-        const spansNotas = [
-          linha.querySelector(".nota-primeiro-tri .nota-text"),
-          linha.querySelector(".nota-segundo-tri .nota-text"),
-          linha.querySelector(".nota-terceiro-tri .nota-text"),
-        ];
-
-        notas.forEach((nota, index) => {
-          if (spansNotas[index]) {
-            spansNotas[index].textContent = nota;
-          }
-        });
-      }
     }
-  });
+
+    database.alunos.forEach((aluno) => {
+        const dadosSalvos = localStorage.getItem(aluno.nome);
+        if (dadosSalvos) {
+            const dados = JSON.parse(dadosSalvos);
+            aluno.notas = dados.notas || [];
+            aluno.status = dados.status || "Reprovado";
+
+            // Atualiza a tabela
+            const linha = document.getElementById(aluno.id);
+            if (linha) {
+                const spansNotas = [
+                    linha.querySelector(".nota-primeiro-tri .nota-text"),
+                    linha.querySelector(".nota-segundo-tri .nota-text"),
+                    linha.querySelector(".nota-terceiro-tri .nota-text")
+                ];
+
+                dados.notas.forEach((nota, index) => {
+                    if (spansNotas[index]) {
+                        spansNotas[index].textContent = nota;
+                    }
+                });
+
+                linha.querySelector(".status").textContent = aluno.status;
+            }
+        }
+    });
 });
+
+
+
+
 
 const iconeLogout = document.getElementById('logout')
 
@@ -243,7 +260,6 @@ iconeLogout.addEventListener('click', () => {
     
 })
 
-// ...existing code...
 if (localStorage.getItem('modoEscuro') === 'ativado') {
     document.documentElement.style.setProperty('--background-color', '#1E1E2F');
     document.documentElement.style.setProperty('--text-color', '#f4f4f4');
@@ -265,4 +281,3 @@ if (localStorage.getItem('modoEscuro') === 'ativado') {
     document.documentElement.style.setProperty('--card-background', '#ffffff');
     document.documentElement.style.setProperty('--hover', '#f0f0f0');
 }
-// ...existing code...

@@ -243,3 +243,12 @@ setaDireitaData.addEventListener('click', () => {
 
 const iconeLogout = document.getElementById('logout')
 
+iconeLogout.addEventListener('click', () => {
+    if (confirm("Deseja realmente sair?")) {
+        console.log("Usuário confirmou a saída");
+        window.location.href = 'index.html'
+    } else {
+        console.log("Usuário cancelou");
+    }
+    
+})
