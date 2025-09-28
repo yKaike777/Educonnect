@@ -57,18 +57,40 @@ let database = {
     ]
 }
 
+const API_KEY = "dPwqYcrCmbbetWxs7SmWQ5ZcRa0E9B1V";
+const YEAR = 2025;
+const COUNTRY = "BR";
+
+async function carregarFeriados() {
+    const url = `https://calendarific.com/api/v2/holidays?api_key=${API_KEY}&country=${COUNTRY}&year=${YEAR}`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data && data.response && data.response.holidays) {
+            return data.response.holidays;
+        }
+    } catch (error) {
+        console.error("Erro ao buscar feriados:", error);
+    }
+    return [];
+}
+
+
+let eventos = JSON.parse(localStorage.getItem("eventos")) || {};
+
+
 const cardsTurma = document.querySelectorAll('.card')
 
 cardsTurma.forEach((card) => {
     const ID = card.getAttribute('id')
     const turma = database.turmas.find(t => t.turmaID == ID)
 
-    // Atualiza o nome da turma no card
     if (turma){
         card.querySelector('h2').textContent = "Turma " + turma.nome
     }   
 
-    // Adiciona o evento de clique para redirecionar para a página da turma
     card.addEventListener('click', () => {
         console.log('Card clicado:', ID);
         window.location.href = `turma.html?turmaID=${ID}`;
@@ -124,5 +146,110 @@ qntdAlunos.forEach((qntd) => {
     const alunos = database.alunos.filter(aluno => aluno.turmaID == id)
 
     qntd.textContent = alunos.length
+})
+
+let data = new Date();
+let diaSemanaHoje = data.getDay();
+
+const diasDaSemana = [
+    'Dom',
+    'Seg',
+    'Ter',
+    'Qua',
+    'Qui',
+    'Sex',
+    'Sáb'
+];
+
+const diaSemanaElemento = document.querySelectorAll('.dia-semana');
+
+function formatarData(d) {
+    let dia = String(d.getDate()).padStart(2, '0');
+    let mes = String(d.getMonth() + 1).padStart(2, '0');
+    let ano = d.getFullYear();
+    return `${dia}.${mes}.${ano}`;
+}
+
+document.getElementById('data').textContent = formatarData(data);
+
+const setaEsquerdaData = document.querySelector('.fa-chevron-left');
+const setaDireitaData = document.querySelector('.fa-chevron-right');
+
+let feriados = [];
+
+async function initFeriados() {
+    feriados = await carregarFeriados();
+    atualizarDiasSemana();
+}
+
+function atualizarDiasSemana() {
+    let diaSemanaHoje = data.getDay();
+
+    diaSemanaElemento.forEach((diaEl) => {
+        const offset = Number(diaEl.getAttribute('data-offset')); 
+
+        let novaData = new Date(data); 
+        novaData.setDate(data.getDate() + offset);
+
+        const novoDiaSemana = (diaSemanaHoje + offset) % 7;
+        diaEl.textContent = diasDaSemana[(novoDiaSemana + 7) % 7];
+
+        const spanData = diaEl.parentElement.querySelector('.dia');
+        const dataFormatada = formatarData(novaData);
+        spanData.textContent = dataFormatada;
+
+        const cardBody = diaEl.parentElement.parentElement.querySelector('.card-body');
+        cardBody.textContent = eventos[dataFormatada] || "Eventos";
+
+        // Checa se é feriado
+        const dataISO = novaData.toISOString().split("T")[0];
+        const feriado = feriados.find(f => f.date.iso === dataISO);
+
+        if (feriado) {
+            spanData.style.color = "red";
+            cardBody.textContent = feriado.name + (eventos[dataFormatada] ? " | " + eventos[dataFormatada] : "");
+        } else {
+            spanData.style.color = "";
+        }
+    });
+}
+
+initFeriados();
+
+
+
+document.querySelectorAll('.card-body').forEach((body) => {
+    body.addEventListener('input', () => {
+        const dataTexto = body.parentElement.querySelector('.dia').textContent;
+        eventos[dataTexto] = body.textContent;
+        localStorage.setItem("eventos", JSON.stringify(eventos));
+    });
+});
+
+
+atualizarDiasSemana();
+
+setaEsquerdaData.addEventListener('click', () => {
+    data.setDate(data.getDate() - 1);
+    document.getElementById('data').textContent = formatarData(data);
+    atualizarDiasSemana();
+});
+
+setaDireitaData.addEventListener('click', () => {
+    data.setDate(data.getDate() + 1);
+    document.getElementById('data').textContent = formatarData(data);
+    atualizarDiasSemana();
+});
+
+const iconeLogout = document.getElementById('logout')
+
+iconeLogout.addEventListener('click', () => {
+    if (confirm("Deseja realmente sair?")) {
+        console.log("Usuário confirmou a saída");
+        window.location.href = 'index.html'
+    } else {
+        console.log("Usuário cancelou");
+    }
+    
 })
 

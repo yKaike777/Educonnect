@@ -50,3 +50,10 @@ window.onload = () => {
         toggleDark.checked = true
     }
 }
+
+const inputMudarNome = document.getElementById('input-nome')
+inputMudarNome.value = sessionStorage.getItem("nome")
+
+function mudarNome(){
+  sessionStorage.setItem('nome', inputMudarNome.value)
+}
