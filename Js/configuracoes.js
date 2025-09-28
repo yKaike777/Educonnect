@@ -6,6 +6,7 @@ btnUpload.addEventListener("click", () => {
   inputFoto.click();
 });
 
+// Adiciona a Foto
 inputFoto.addEventListener("change", function () {
   const file = this.files[0];
   if (file) {
@@ -21,6 +22,7 @@ inputFoto.addEventListener("change", function () {
   }
 });
 
+// Modo Escuro
 const toggleDark = document.getElementById("toggle-dark");
 
 toggleDark.addEventListener("change", function() {
@@ -44,6 +46,7 @@ toggleDark.addEventListener("change", function() {
   }
 });
 
+// Modo Escuro quando a página carrega
 window.onload = () => {
     if (localStorage.getItem('modoEscuro') === 'ativado'){
         toggleDark.checked = true;

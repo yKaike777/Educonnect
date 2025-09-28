@@ -73,6 +73,7 @@ const alunosNome = alunos.map(aluno => aluno.nome);
 const qntdAlunos = document.getElementById('qntd-alunos');
 qntdAlunos.textContent = `${alunos.length}`;
 
+// Coloca o aluno na tabela
 alunos.forEach((aluno) => {
     const tabela = document.querySelector('tbody');
     const linha = document.createElement('tr');
@@ -95,6 +96,7 @@ alunos.forEach((aluno) => {
 });
 
 
+// Nome + Número da Chamada
 const nomeTabela = document.querySelectorAll('.nome-aluno');
 
 nomeTabela.forEach((aluno, index) => {
@@ -108,6 +110,7 @@ const nomeProfessor = document.getElementById('professor');
 nomeProfessor.textContent = sessionStorage.getItem('nome');
 
 
+// Menu Edição de Notas
 let celulaEditando = null;
 const iconesEdicao = document.querySelectorAll('.fa-pen-to-square');
 
@@ -119,6 +122,7 @@ iconesEdicao.forEach((icone) => {
         celulaEditando = iconeClicado.parentElement;
         
         const classeCelula = celulaEditando.classList[0];
+
         let trimestre = '';
         if (classeCelula === 'nota-primeiro-tri') {
             trimestre = '1º Trimestre';
@@ -127,6 +131,7 @@ iconesEdicao.forEach((icone) => {
         } else if (classeCelula === 'nota-terceiro-tri') {
             trimestre = '3º Trimestre';
         }
+
         document.getElementById('trimestre').textContent = trimestre;
 
         let nomeAlunoEditando = celulaEditando.parentElement.querySelector('.nome-aluno').textContent
@@ -195,7 +200,6 @@ function atualizarNotasDatabase() {
     };
     localStorage.setItem(nomeAluno, JSON.stringify(dadosAluno));
 
-    // Atualiza também no "database"
     const aluno = database.alunos.find(aluno => aluno.nome === nomeAluno);
     if (aluno) {
         aluno.notas = notas;

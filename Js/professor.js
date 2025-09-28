@@ -57,6 +57,7 @@ let database = {
     ]
 }
 
+// API Calendarific
 const API_KEY = "dPwqYcrCmbbetWxs7SmWQ5ZcRa0E9B1V";
 const YEAR = 2025;
 const COUNTRY = "BR";
@@ -81,6 +82,7 @@ async function carregarFeriados() {
 let eventos = JSON.parse(localStorage.getItem("eventos")) || {};
 
 
+// Atualiza o nome da Turma nos Cards
 const cardsTurma = document.querySelectorAll('.card')
 
 cardsTurma.forEach((card) => {
@@ -113,6 +115,7 @@ fotoPerfil.addEventListener('click', () => {
     window.location.href = 'configuracoes.html'
 })
 
+// Carrega a Foto de Perfil quando o página carrega
 window.addEventListener("DOMContentLoaded", () => {
   const fotoSalva = localStorage.getItem("fotoPerfil");
   if (fotoSalva) {
@@ -144,6 +147,7 @@ if (localStorage.getItem('modoEscuro') === 'ativado'){
     document.documentElement.style.setProperty('--hover', '#f0f0f0');
 }
 
+// Atualiza a quantidade de Alunos nos Cards
 const qntdAlunos = document.querySelectorAll('.qntd-alunos')
 
 qntdAlunos.forEach((qntd) => {
@@ -153,6 +157,7 @@ qntdAlunos.forEach((qntd) => {
     qntd.textContent = alunos.length
 })
 
+// Dia da Semana e Data no Calendário
 let data = new Date();
 let diaSemanaHoje = data.getDay();
 
@@ -222,7 +227,7 @@ function atualizarDiasSemana() {
 initFeriados();
 
 
-
+// Adiciona os Eventos no calendário
 document.querySelectorAll('.card-body').forEach((body) => {
     body.addEventListener('input', () => {
         const dataTexto = body.parentElement.querySelector('.dia').textContent;
@@ -234,6 +239,7 @@ document.querySelectorAll('.card-body').forEach((body) => {
 
 atualizarDiasSemana();
 
+// Muda o Dia
 setaEsquerdaData.addEventListener('click', () => {
     data.setDate(data.getDate() - 1);
     document.getElementById('data').textContent = formatarData(data);
@@ -246,6 +252,7 @@ setaDireitaData.addEventListener('click', () => {
     atualizarDiasSemana();
 });
 
+// Logout
 const iconeLogout = document.getElementById('logout')
 
 iconeLogout.addEventListener('click', () => {

@@ -6,13 +6,17 @@ function entrar() {
 
         if (radio.value === "aluno") {
             alert('Função em Desenvolvimento!')
+
             sessionStorage.clear()
             sessionStorage.setItem("nome", nome)
+
             // window.location.href = "aluno.html"
         } else if (radio.value === "professor") {
             alert(`Bem-vindo, ${nome}! Entrando como Professor...`)
+
             sessionStorage.clear()
             sessionStorage.setItem("nome", nome)
+            
             window.location.href = "professor.html"
         }
     }else{
