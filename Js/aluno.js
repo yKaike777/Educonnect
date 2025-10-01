@@ -57,7 +57,6 @@ let database = {
     ]
 }
 
-// API Calendarific
 const API_KEY = "dPwqYcrCmbbetWxs7SmWQ5ZcRa0E9B1V";
 const YEAR = 2025;
 const COUNTRY = "BR";
@@ -78,98 +77,51 @@ async function carregarFeriados() {
     return [];
 }
 
-
 let eventos = JSON.parse(localStorage.getItem("eventos")) || {};
 
-
-// Atualiza o nome da Turma nos Cards
-const cardsTurma = document.querySelectorAll('.card')
-
-cardsTurma.forEach((card) => {
-    const ID = card.getAttribute('id')
-    const turma = database.turmas.find(t => t.turmaID == ID)
-
-    if (turma){
-        card.querySelector('h2').textContent = "Turma " + turma.nome
-    }   
-
-    card.addEventListener('click', () => {
-        console.log('Card clicado:', ID);
-        window.location.href = `turma.html?turmaID=${ID}`;
-    })
-})
-
-
-function criarAviso() {
-    const avisoTitulo = document.getElementById("input-titulo-aviso");
-    const avisoConteudo = document.getElementById("input-descricao-aviso");
-
-    let avisos = JSON.parse(localStorage.getItem("avisos")) || [];
-
-    const aviso = {
-        "titulo": avisoTitulo.value,
-        "conteudo": avisoConteudo.value
-    };
-
-    avisos.push(aviso);
-    console.log(aviso)
-
-    localStorage.setItem("avisos", JSON.stringify(avisos));
-
-    alert(`Aviso criado com sucesso!\nTítulo: ${avisoTitulo.value}\nConteúdo: ${avisoConteudo.value}`);
-
-    avisoTitulo.value = "";
-    avisoConteudo.value = "";
-}
-
-
-const fotoPerfil = document.getElementById('foto-perfil')
-
-fotoPerfil.addEventListener('click', () => {
-    window.location.href = 'configuracoes.html'
-})
-
-// Carrega a Foto de Perfil quando o página carrega
 window.addEventListener("DOMContentLoaded", () => {
-  const fotoSalva = localStorage.getItem("fotoPerfil");
-  if (fotoSalva) {
-    document.getElementById("foto-perfil-usuario").src = fotoSalva;
-  }
+    // Pega o ID do aluno da URL
+    const params = new URLSearchParams(window.location.search);
+    const alunoID = Number(params.get('ID'));
+    console.log('id do aluno:', alunoID)
 
-  const nome = document.getElementById('nome')
-  nome.textContent = sessionStorage.getItem('nome')
+    // Busca o aluno pelo ID
+    const aluno = database.alunos.find(a => a.id === alunoID);
+    console.log('aluno:', aluno)
+
+    // Se encontrou o aluno, mostra as notas na tabela
+    if (aluno) {
+        // Se tiver notas salvas no localStorage, usa elas
+        const dadosSalvos = localStorage.getItem(aluno.nome);
+        let notas = ["-", "-", "-"];
+        if (dadosSalvos) {
+            const dados = JSON.parse(dadosSalvos);
+            notas = dados.notas || ["-", "-", "-"];
+        }
+
+        // Adiciona a linha na tabela
+        const tbody = document.querySelector("#notas-container table tbody");
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>Matemática</td>
+            <td>${notas[0]}</td>
+            <td>${notas[1]}</td>
+            <td>${notas[2]}</td>
+        `;
+        tbody.appendChild(tr);
+    }
+
+    const fotoSalva = localStorage.getItem("fotoPerfil");
+    if (fotoSalva) {
+        document.getElementById("foto-perfil-usuario").src = fotoSalva;
+    }
+
+    const nome = document.getElementById('nome')
+    nome.textContent = sessionStorage.getItem('nome')
+
+    
 });
 
-if (localStorage.getItem('modoEscuro') === 'ativado'){
-    document.documentElement.style.setProperty('--background-color', '#1E1E2F');
-    document.documentElement.style.setProperty('--text-color', '#f4f4f4');
-    document.documentElement.style.setProperty('--primary-color', '#252545');
-    document.documentElement.style.setProperty('--secondary-color', '#ff6600');
-    document.documentElement.style.setProperty('--border-color', '#dbdbdbff');
-    document.documentElement.style.setProperty('--title-color', '#ffffff');
-    document.documentElement.style.setProperty('--title-color-dark', '#ffffff');
-    document.documentElement.style.setProperty('--card-background', '#383F6B');
-    document.documentElement.style.setProperty('--hover', '#191927ff');
-} else{
-    document.documentElement.style.setProperty('--background-color', '#f4f4f4');
-    document.documentElement.style.setProperty('--text-color', '#333');
-    document.documentElement.style.setProperty('--primary-color', '#383F6B');
-    document.documentElement.style.setProperty('--secondary-color', '#ff6600');
-    document.documentElement.style.setProperty('--border-color', '#e2e2e2');
-    document.documentElement.style.setProperty('--title-color-dark', '#383F6B');
-    document.documentElement.style.setProperty('--card-background', '#ffffff');
-    document.documentElement.style.setProperty('--hover', '#f0f0f0');
-}
-
-// Atualiza a quantidade de Alunos nos Cards
-const qntdAlunos = document.querySelectorAll('.qntd-alunos')
-
-qntdAlunos.forEach((qntd) => {
-    const id = qntd.getAttribute('id')
-    const alunos = database.alunos.filter(aluno => aluno.turmaID == id)
-
-    qntd.textContent = alunos.length
-})
 
 // Dia da Semana e Data no Calendário
 let data = new Date();
@@ -266,7 +218,6 @@ setaDireitaData.addEventListener('click', () => {
     atualizarDiasSemana();
 });
 
-// Logout
 const iconeLogout = document.getElementById('logout')
 
 iconeLogout.addEventListener('click', () => {
