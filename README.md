@@ -40,7 +40,6 @@ Os alunos terão acesso restrito às suas informações pessoais, notas e avisos
 - JavaScript
 
 ### API's:
-- Google Calendar API
-- Chart.js
+- Calendarfic API
 
 Wireframe do Projeto: https://www.figma.com/site/xcyTTjbGHJ0vqTmj216pr0/Educonnect-REAL?node-id=0-1&t=cao12378xSU7VRP4-1
